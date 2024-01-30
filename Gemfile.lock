@@ -1,0 +1,68 @@
+PATH
+  remote: .
+  specs:
+    extreme_overclocking_client (0.1.0)
+      activesupport (~> 7.1)
+      nokogiri (~> 1.16)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activesupport (7.1.3)
+      base64
+      bigdecimal
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      connection_pool (>= 2.2.5)
+      drb
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      mutex_m
+      tzinfo (~> 2.0)
+    base64 (0.2.0)
+    bigdecimal (3.1.6)
+    coderay (1.1.3)
+    concurrent-ruby (1.2.3)
+    connection_pool (2.4.1)
+    diff-lcs (1.5.0)
+    drb (2.2.0)
+      ruby2_keywords
+    i18n (1.14.1)
+      concurrent-ruby (~> 1.0)
+    method_source (1.0.0)
+    minitest (5.21.2)
+    mutex_m (0.2.0)
+    nokogiri (1.16.0-arm64-darwin)
+      racc (~> 1.4)
+    pry (0.14.2)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    racc (1.7.3)
+    rake (13.1.0)
+    rspec (3.12.0)
+      rspec-core (~> 3.12.0)
+      rspec-expectations (~> 3.12.0)
+      rspec-mocks (~> 3.12.0)
+    rspec-core (3.12.2)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.6)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-support (3.12.1)
+    ruby2_keywords (0.0.5)
+    tzinfo (2.0.6)
+      concurrent-ruby (~> 1.0)
+
+PLATFORMS
+  arm64-darwin-22
+
+DEPENDENCIES
+  extreme_overclocking_client!
+  pry
+  rake (~> 13.0)
+  rspec (~> 3.0)
+
+BUNDLED WITH
+   2.4.17
