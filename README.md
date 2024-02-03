@@ -1,6 +1,6 @@
 # extreme_overclocking_client
 
-Ruby client for [Extreme Overclocking Exporting](https://folding.extremeoverclocking.com/?nav=XML)
+Ruby client for [Extreme Overclocking's Folding@Home Data Exporting](https://folding.extremeoverclocking.com/?nav=XML)
 
 ## Getting Started
 
@@ -19,6 +19,11 @@ gem install extreme_overclocking_client
 ## Usage
 
 Please read the full [usage statement](https://folding.extremeoverclocking.com/?nav=XML) from Extreme Overclocking before using this client. This client has some rate limiting built-in, but ultimately it's up to consumers of the gem to prevent excessive queries and abuse. Neglecting to do so may result in your IP being blocked.
+
+- [Service](#service)
+- [Config](#config)
+- [User](#user)
+- [Team](#team)
 
 Data can be retrieved via the `Service` class or individual classes with a configuration parameter.
 
