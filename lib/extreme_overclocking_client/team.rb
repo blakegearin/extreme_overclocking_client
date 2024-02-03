@@ -10,7 +10,8 @@ module ExtremeOverclockingClient
       :rank,
       :points,
       :wus,
-      :updated_at
+      :updated_at,
+      :retrieved_at
 
     def initialize(params = {})
       unless params[:belongs_to_user]
@@ -24,20 +25,41 @@ module ExtremeOverclockingClient
 
         raise ArgumentError, "Required: id of team" unless id
 
-        params = { t: id }
-        response = request(
-          config: config,
-          endpoint: "/xml/team_summary.php",
-          params: params,
-        )
-
-        raise StandardError, response.body unless response.code == "200"
-
-        stats_hash = Hash.from_xml(response.body)["EOC_Folding_Stats"]
-        params = stats_hash["team"]
-        params[:updated_at] = Time.at(stats_hash["status"]["Last_Update_Unix_TimeStamp"]&.to_i).utc.to_s
+        params = fetch(config: config, id: id)
       end
 
+      build(params: params)
+    end
+
+    def refresh
+      time_difference_in_hours = (Time.now.utc - Time.parse(@retrieved_at)) / 3600
+
+      return unless time_difference_in_hours >= 3.0
+
+      params = fetch(config: @config, id: @id)
+      build(params: params)
+
+      self
+    end
+
+    private
+
+    def fetch(config:, id:)
+      params = { t: id }
+      response = request(
+        config: config,
+        endpoint: "/xml/team_summary.php",
+        params: params,
+      )
+
+      stats_hash = response["EOC_Folding_Stats"]
+      params = stats_hash["team"]
+      params[:updated_at] = Time.at(stats_hash["status"]["Last_Update_Unix_TimeStamp"]&.to_i).utc.to_s
+
+      params
+    end
+
+    def build(params:)
       @id = params["TeamID"]&.to_i
       @name = params["Team_Name"]
       @users = {
@@ -61,10 +83,7 @@ module ExtremeOverclockingClient
       @wus = params["WUs"]&.to_i
 
       @updated_at = params[:updated_at]
-    end
-
-    def self.refresh
-
+      @retrieved_at = Time.now.utc.to_s
     end
   end
 end

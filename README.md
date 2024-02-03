@@ -18,7 +18,45 @@ gem install extreme_overclocking_client
 
 ## Usage
 
-Please read the full [usage statement](https://folding.extremeoverclocking.com/?nav=XML) from Extreme Overclocking before using this client. This client has a simplistic form of rate limiting built-in with the `refresh` methods, but
+Please read the full [usage statement](https://folding.extremeoverclocking.com/?nav=XML) from Extreme Overclocking before using this client. This client has some rate limiting built-in, but ultimately it's up to consumers of the gem to prevent excessive queries and abuse. Neglecting to do so may result in your IP being blocked.
+
+Data can be retrieved via the `Service` class or individual classes with a configuration parameter.
+
+### Service
+
+```ruby
+service = ExtremeOverclockingClient::Service.new(
+  project_url: "https://github.com/blakegearin/extreme_overclocking_client",
+  project_name: "ExtremeOverclockingClientTesting",
+  project_version: "0.0.1",
+)
+
+user_id = 32334
+name = "EOC_Jason"
+team_id = 11314
+
+# User
+
+user = service.user(id: user_id)
+user = service.user(name: name, team_id: team_id)
+
+# Users
+
+users = service.users(ids: [32334, 811139])
+hashes = [
+  { name: name, team_id: team_id},
+  { name: name, team_id: team_id},
+]
+users = service.users(hashes: hashes)
+
+# Team
+
+team = service.team(id: team_id)
+
+# Teams
+
+teams = service.teams(ids: [11314, 223518])
+```
 
 ### Config
 
@@ -28,23 +66,25 @@ Provide a `project_url` and `project_name` to let Extreme Overclocking know what
 config = ExtremeOverclockingClient::Config.new(
   project_url: "https://github.com/blakegearin/extreme_overclocking_client",
   project_name: "ExtremeOverclockingClientTesting",
+  project_version: "0.0.1",
 )
 ```
 
 ### User
 
 ```ruby
-id = 32334
+user_id = 32334
 name = "EOC_Jason"
 team_id = 11314
 config = ExtremeOverclockingClient::Config.new(
   project_url: "https://github.com/blakegearin/extreme_overclocking_client",
   project_name: "ExtremeOverclockingClientTesting",
+  project_version: "0.0.1",
 )
 
 # Fetch a user by id
 # Required: config, id
-user = ExtremeOverclockingClient::User.new(config: config, id: id)
+user = ExtremeOverclockingClient::User.new(config: config, id: user_id)
 
 # Fetch a user with a name and team_id
 # Required: config, name, team_id
@@ -61,13 +101,14 @@ id = 11314
 config = ExtremeOverclockingClient::Config.new(
   project_url: "https://github.com/blakegearin/extreme_overclocking_client",
   project_name: "ExtremeOverclockingClientTesting",
+  project_version: "0.0.1",
 )
 
 # Fetch a team by id
 team = ExtremeOverclockingClient::Team.new(config: config, id: id)
 
 ## Update a team with the latest stats
-user.refresh
+team.refresh
 ```
 
 ## Development

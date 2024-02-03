@@ -1,6 +1,6 @@
 # frozen_string_literal: false
 
-require "active_support"
+require "active_support/all"
 require "net/http"
 require "nokogiri"
 
@@ -21,7 +21,11 @@ module ExtremeOverclockingClient
       request['Referer'] = config.referer
       request['User-Agent'] = config.user_agent
 
-      http.request(request)
+      response = http.request(request)
+
+      raise StandardError, response.body unless response.code == "200"
+
+      Hash.from_xml(response.body)
     end
   end
 end
