@@ -1,6 +1,6 @@
 # extreme_overclocking_client
 
-Ruby client for [Extreme Overclocking's Folding@Home Data Exporting](https://folding.extremeoverclocking.com/?nav=XML)
+Ruby client for [Extreme Overclocking's Folding@home Data Export](https://folding.extremeoverclocking.com/?nav=XML)
 
 ## Getting Started
 
