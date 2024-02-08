@@ -18,7 +18,7 @@ gem install extreme_overclocking_client
 
 ## Usage
 
-Please read the full [usage statement](https://folding.extremeoverclocking.com/?nav=XML) from Extreme Overclocking before using this client. This client has some rate limiting built-in, but ultimately it's up to consumers of the gem to prevent excessive queries and abuse. Neglecting to do so may result in your IP being blocked.
+Please read the full [usage statement](https://folding.extremeoverclocking.com/?nav=XML) from Extreme Overclocking before using. This client has some simplistic rate limiting built-in, but ultimately it's up to consumers of the gem to prevent excessive queries and abuse. Neglecting to do so may result in your IP being blocked.
 
 - [Service](#service)
 - [Config](#config)

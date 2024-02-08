@@ -11,6 +11,10 @@ module ExtremeOverclockingClient
     FEED_URL = "https://folding.extremeoverclocking.com"
 
     def request(base_url: FEED_URL, config:, endpoint:, params: {})
+      unless config.is_a?(ExtremeOverclockingClient::Config)
+        raise ArgumentError, "Param 'config' must be an instance of ExtremeOverclockingClient::Config"
+      end
+
       url = URI.join(base_url, endpoint)
       url.query = URI.encode_www_form(params) unless params.empty?
 
