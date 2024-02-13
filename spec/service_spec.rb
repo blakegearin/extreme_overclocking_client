@@ -5,17 +5,11 @@ RSpec.describe ExtremeOverclockingClient::Service do
   let(:project_url) { 'https://rspec.test' }
   let(:project_name) { 'RSpec Test' }
   let(:project_version) { '0.0.0' }
-  let(:config) do
-    ExtremeOverclockingClient::Config.new(
-      project_url: project_url,
-      project_name: project_name,
-      project_version: project_version
-    )
-  end
+  let(:config) { ExtremeOverclockingClient::Config.new(project_url:, project_name:, project_version:) }
 
   describe '#initialize' do
     it 'sets @config' do
-      service = described_class.new(project_url: project_url, project_name: project_name, project_version: project_version)
+      service = described_class.new(project_url:, project_name:, project_version:)
 
       expect(service.config.referer).to eq(project_url)
     end
@@ -24,9 +18,9 @@ RSpec.describe ExtremeOverclockingClient::Service do
   describe '#team' do
     let(:team_id) { 12345 }
     let(:team_instance) { double('team_instance') }
-    let(:config) { ExtremeOverclockingClient::Config.new(project_url: project_url, project_name: project_name, project_version: project_version) }
+    let(:config) { ExtremeOverclockingClient::Config.new(project_url:, project_name:, project_version:) }
 
-    subject { described_class.new(project_url: project_url, project_name: project_name, project_version: project_version) }
+    subject { described_class.new(project_url:, project_name:, project_version:) }
 
     before do
       allow(ExtremeOverclockingClient::Team).to receive(:new).and_return(team_instance)
@@ -40,7 +34,9 @@ RSpec.describe ExtremeOverclockingClient::Service do
     end
 
     it 'initializes a Team instance with the provided config and team ID' do
-      expect(ExtremeOverclockingClient::Team).to receive(:new).with(hash_including(config: match_config(config), id: team_id))
+      expect(ExtremeOverclockingClient::Team)
+        .to receive(:new)
+        .with(hash_including(config: match_config(config), id: team_id))
 
       team = subject.team(id: team_id)
 
