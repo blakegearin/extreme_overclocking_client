@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'extreme_overclocking_client/config'
 
@@ -5,10 +7,6 @@ RSpec.describe ExtremeOverclockingClient::Config do
   let(:project_url) { 'https://example.com' }
   let(:project_name) { 'Example Project' }
   let(:project_version) { '1.0.0' }
-  let(:expected_referer) { project_url }
-  let(:expected_user_agent) do
-    "#{project_name}/#{project_version} ExtremeOverclockingClient/#{ExtremeOverclockingClient::VERSION} Ruby/#{RUBY_VERSION}"
-  end
   let(:config) { described_class.new(project_url:, project_name:, project_version:) }
 
   shared_examples 'an invalid configuration' do |missing_param|
@@ -20,8 +18,11 @@ RSpec.describe ExtremeOverclockingClient::Config do
   describe '#initialize' do
     context 'with valid params' do
       it 'initializes with the correct attributes' do
-        expect(config.referer).to eq(expected_referer)
-        expect(config.user_agent).to eq(expected_user_agent)
+        expect(config.referer).to eq(project_url)
+        expect(config.user_agent).to eq(
+          "#{project_name}/#{project_version} ExtremeOverclockingClient/" \
+            "#{ExtremeOverclockingClient::VERSION} Ruby/#{RUBY_VERSION}"
+        )
       end
     end
 
