@@ -37,9 +37,9 @@ RSpec.describe ExtremeOverclockingClient::Request do
       it 'raises an error with the response body' do
         stub_request(:get, url).to_return(body: 'Error message', status: 500)
 
-        expect {
+        expect do
           dummy_class.request(config:, endpoint:)
-        }.to raise_error(StandardError, 'Error message')
+        end.to raise_error(StandardError, 'Error message')
 
         expect(WebMock).to have_requested(:get, url)
       end

@@ -1,4 +1,4 @@
-inherit_from: ../.rubocop.yml
+# Docs: https://docs.rubocop.org/rubocop/configuration
 
 AllCops:
   NewCops: enable

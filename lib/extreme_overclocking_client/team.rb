@@ -23,7 +23,7 @@ module ExtremeOverclockingClient
 
         id = params[:id] || nil
 
-        raise ArgumentError, "Required: id of team" unless id
+        raise ArgumentError, "Required: id of team" unless id.present?
 
         params = fetch(config: config, id: id)
       end

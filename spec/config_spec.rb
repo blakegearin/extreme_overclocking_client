@@ -21,7 +21,7 @@ RSpec.describe ExtremeOverclockingClient::Config do
         expect(config.referer).to eq(project_url)
         expect(config.user_agent).to eq(
           "#{project_name}/#{project_version} ExtremeOverclockingClient/" \
-            "#{ExtremeOverclockingClient::VERSION} Ruby/#{RUBY_VERSION}"
+          "#{ExtremeOverclockingClient::VERSION} Ruby/#{RUBY_VERSION}"
         )
       end
     end

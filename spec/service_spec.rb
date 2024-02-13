@@ -18,9 +18,8 @@ RSpec.describe ExtremeOverclockingClient::Service do
   end
 
   describe '#team' do
-    let(:team_id) { 12345 }
+    let(:team_id) { 123 }
     let(:team_instance) { double('team_instance') }
-    let(:config) { ExtremeOverclockingClient::Config.new(project_url:, project_name:, project_version:) }
 
     subject { described_class.new(project_url:, project_name:, project_version:) }
 
