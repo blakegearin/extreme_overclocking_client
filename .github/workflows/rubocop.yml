@@ -3,11 +3,11 @@ name: Rubocop
 on:
   push:
     paths:
-      - 'app/**'
+      - 'lib/**'
   pull_request:
     branches: [ main ]
     paths:
-      - 'app/**'
+      - 'lib/**'
   workflow_dispatch:
 
 jobs:
