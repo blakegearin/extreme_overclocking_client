@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors = ['Blake Gearin']
   spec.email = 'hello@blakeg.me'
 
-  spec.summary = 'Ruby client for Extreme Overclocking'
-  spec.description = 'Ruby client for Extreme Overclocking'
+  spec.summary = 'Extreme Overclocking\'s Folding@home Data Export'
+  spec.description = 'Extreme Overclocking\'s Folding@home Data Export'
   spec.homepage = 'https://github.com/blakegearin/extreme_overclocking_client'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 3.1.0'
