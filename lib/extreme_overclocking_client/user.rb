@@ -48,8 +48,8 @@ module ExtremeOverclockingClient
         params = { u: id }
       elsif name && team_id
         params = {
-          un: name,
           t: team_id,
+          un: name,
         }
       else
         raise ArgumentError, "Required: id or (name and team_id) of user"
@@ -58,7 +58,7 @@ module ExtremeOverclockingClient
       response = request(
         config: config,
         endpoint: "/xml/user_summary.php",
-        params: params,
+        params:,
       )
 
       stats_hash = response["EOC_Folding_Stats"]
