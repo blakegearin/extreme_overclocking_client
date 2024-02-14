@@ -12,7 +12,8 @@ module ExtremeOverclockingClient
       raise ArgumentError, "Param 'project_version' must be defined" unless project_version && !project_version.empty?
 
       @referer = project_url
-      @user_agent = "#{project_name}/#{project_version} ExtremeOverclockingClient/#{ExtremeOverclockingClient::VERSION} Ruby/#{RUBY_VERSION}"
+      @user_agent = "#{project_name}/#{project_version} ExtremeOverclockingClient/" \
+                    "#{ExtremeOverclockingClient::VERSION} Ruby/#{RUBY_VERSION}"
     end
   end
 end

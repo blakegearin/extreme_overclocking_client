@@ -31,10 +31,10 @@ RSpec.describe ExtremeOverclockingClient::Team do
       'WUs' => 5000,
       'EOC_Folding_Stats' => {
         'status' => {
-          'Last_Update_Unix_TimeStamp' => Time.now.to_i
+          'Last_Update_Unix_TimeStamp' => Time.now.to_i,
         },
         'team' => {},
-      }
+      },
     }
   end
   let(:team) { described_class.new(params) }
@@ -44,7 +44,7 @@ RSpec.describe ExtremeOverclockingClient::Team do
       {
         belongs_to_user:,
         config:,
-        id:
+        id:,
       }
     end
 
@@ -111,7 +111,7 @@ RSpec.describe ExtremeOverclockingClient::Team do
     let(:params) do
       {
         belongs_to_user: true,
-        config:
+        config:,
       }
     end
     let(:retrieved_at) { (Time.now - (hours * 60 * 60)).to_s }
@@ -164,7 +164,7 @@ RSpec.describe ExtremeOverclockingClient::Team do
     let(:params) do
       {
         belongs_to_user: true,
-        config:
+        config:,
       }
     end
 

@@ -2,6 +2,38 @@
 
 AllCops:
   NewCops: enable
+  TargetRubyVersion: 3.1
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: 'with_fixed_indentation'
+  Enabled: true
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
 
 Metrics/BlockLength:
   Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/HashConversion:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: 'consistent_comma'

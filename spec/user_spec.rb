@@ -32,7 +32,7 @@ RSpec.describe ExtremeOverclockingClient::User do
       'First_Record' => Time.now.utc.to_s,
       'EOC_Folding_Stats' => {
         'status' => {
-          'Last_Update_Unix_TimeStamp' => Time.now.to_i
+          'Last_Update_Unix_TimeStamp' => Time.now.to_i,
         },
         'user' => {},
         'team' => nil,
@@ -45,7 +45,7 @@ RSpec.describe ExtremeOverclockingClient::User do
       config:,
       id:,
       name:,
-      team_id:,
+      team_id:
     )
   end
 
@@ -147,10 +147,7 @@ RSpec.describe ExtremeOverclockingClient::User do
       end
 
       it 'returns params hash' do
-        expect(user.send(:fetch, config:, id:)).to eq({
-          team: nil,
-          updated_at: Time.now.utc.to_s,
-        })
+        expect(user.send(:fetch, config:, id:)).to eq({ team: nil, updated_at: Time.now.utc.to_s })
       end
     end
 

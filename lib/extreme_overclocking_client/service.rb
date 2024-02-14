@@ -6,29 +6,29 @@ module ExtremeOverclockingClient
 
     def initialize(project_url:, project_name:, project_version:)
       @config = Config.new(
-        project_url: project_url,
-        project_name: project_name,
-        project_version: project_version,
+        project_url:,
+        project_name:,
+        project_version:
       )
     end
 
     def team(id:)
-      raise ArgumentError, "Required: id" unless id
+      raise ArgumentError, 'Required: id' unless id
 
-      Team.new(config: @config, id: id)
+      Team.new(config: @config, id:)
     end
 
     def teams(ids:)
-      raise ArgumentError, "Required: ids" unless ids
+      raise ArgumentError, 'Required: ids' unless ids
 
       ids.map do |id|
         rate_limit
 
         if id.is_a?(Integer)
           begin
-            Team.new(config: @config, id: id)
-          rescue => error
-            { id: id, error: error }
+            Team.new(config: @config, id:)
+          rescue StandardError => e
+            { id:, error: e }
           end
         else
           { error: "Ids entry is not an integer: #{id}" }
@@ -38,59 +38,55 @@ module ExtremeOverclockingClient
 
     def user(id:, name: nil, team_id: nil)
       if id
-        User.new(config: @config, id: id)
+        User.new(config: @config, id:)
       elsif name && team_id
-        User.new(config: @config, name: name, team_id: team_id)
+        User.new(config: @config, name:, team_id:)
       else
-        raise ArgumentError, "Required: id or (name and team_id) of user"
+        raise ArgumentError, 'Required: id or (name and team_id) of user'
       end
     end
 
     def users(ids: nil, hashes: nil)
       if ids
         ids.map do |item|
-          begin
-            rate_limit
+          rate_limit
 
-            id = nil
+          id = nil
 
-            if item.is_a?(Integer)
-              id = item
-            else
-              symbol_hash = item.transform_keys(&:to_sym) if item.is_a?(Hash)
-              id = symbol_hash[:id] if symbol_hash
-            end
-
-            if id
-              User.new(config: @config, id: id)
-            else
-              { error: "Could not find id: #{item}" }
-            end
-          rescue => error
-            { id: id, error: error }
+          if item.is_a?(Integer)
+            id = item
+          else
+            symbol_hash = item.transform_keys(&:to_sym) if item.is_a?(Hash)
+            id = symbol_hash[:id] if symbol_hash
           end
+
+          if id
+            User.new(config: @config, id:)
+          else
+            { error: "Could not find id: #{item}" }
+          end
+        rescue StandardError => e
+          { id:, error: e }
         end
       elsif hashes
         hashes.map do |hash|
-          begin
-            rate_limit
+          rate_limit
 
-            if hash.is_a?(Hash)
-              symbol_hash = hash.transform_keys(&:to_sym)
-              User.new(
-                config: @config,
-                name: symbol_hash[:name],
-                team_id: symbol_hash[:team_id],
-              )
-            else
-              { error: "Hashes entry is not a hash: #{hash}" }
-            end
-          rescue => error
-            { id: id, error: error }
+          if hash.is_a?(Hash)
+            symbol_hash = hash.transform_keys(&:to_sym)
+            User.new(
+              config: @config,
+              name: symbol_hash[:name],
+              team_id: symbol_hash[:team_id]
+            )
+          else
+            { error: "Hashes entry is not a hash: #{hash}" }
           end
+        rescue StandardError => e
+          { id:, error: e }
         end
       else
-        raise ArgumentError, "Required: ids or hashes"
+        raise ArgumentError, 'Required: ids or hashes'
       end
     end
 
