@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    extreme_overclocking_client (0.1.0)
+    extreme_overclocking_client (0.1.1)
       activesupport (~> 7.1)
       nokogiri (~> 1.16)
 
