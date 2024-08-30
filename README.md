@@ -2,6 +2,8 @@
 
 Ruby client for [Extreme Overclocking's Folding@home Data Export](https://folding.extremeoverclocking.com/?nav=XML)
 
+Need more data on projects and GPUs? Try out [`folding_at_home_client`](https://github.com/blakegearin/extreme_overclocking_client)
+
 ## Getting Started
 
 Install and add to Gemfile:
@@ -31,13 +33,13 @@ Data can be retrieved via the `Service` class or individual classes with a confi
 
 ```ruby
 service = ExtremeOverclockingClient::Service.new(
-  project_url: "https://github.com/blakegearin/extreme_overclocking_client",
-  project_name: "ExtremeOverclockingClientTesting",
-  project_version: "0.0.1",
+  project_url: 'https://github.com/blakegearin/extreme_overclocking_client',
+  project_name: 'ExtremeOverclockingClientTesting',
+  project_version: '0.0.1',
 )
 
 user_id = 32334
-name = "EOC_Jason"
+name = 'EOC_Jason'
 team_id = 11314
 
 # User
@@ -69,9 +71,9 @@ Provide a `project_url` and `project_name` to let Extreme Overclocking know what
 
 ```ruby
 config = ExtremeOverclockingClient::Config.new(
-  project_url: "https://github.com/blakegearin/extreme_overclocking_client",
-  project_name: "ExtremeOverclockingClientTesting",
-  project_version: "0.0.1",
+  project_url: 'https://github.com/blakegearin/extreme_overclocking_client',
+  project_name: 'ExtremeOverclockingClientTesting',
+  project_version: '0.0.1',
 )
 ```
 
@@ -79,12 +81,12 @@ config = ExtremeOverclockingClient::Config.new(
 
 ```ruby
 user_id = 32334
-name = "EOC_Jason"
+name = 'EOC_Jason'
 team_id = 11314
 config = ExtremeOverclockingClient::Config.new(
-  project_url: "https://github.com/blakegearin/extreme_overclocking_client",
-  project_name: "ExtremeOverclockingClientTesting",
-  project_version: "0.0.1",
+  project_url: 'https://github.com/blakegearin/extreme_overclocking_client',
+  project_name: 'ExtremeOverclockingClientTesting',
+  project_version: '0.0.1',
 )
 
 # Fetch a user by id
@@ -104,9 +106,9 @@ user.refresh
 ```ruby
 id = 11314
 config = ExtremeOverclockingClient::Config.new(
-  project_url: "https://github.com/blakegearin/extreme_overclocking_client",
-  project_name: "ExtremeOverclockingClientTesting",
-  project_version: "0.0.1",
+  project_url: 'https://github.com/blakegearin/extreme_overclocking_client',
+  project_name: 'ExtremeOverclockingClientTesting',
+  project_version: '0.0.1',
 )
 
 # Fetch a team by id
