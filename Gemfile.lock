@@ -40,7 +40,9 @@ GEM
     method_source (1.0.0)
     minitest (5.21.2)
     mutex_m (0.2.0)
-    nokogiri (1.16.0-arm64-darwin)
+    nokogiri (1.18.4-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.18.4-x86_64-linux-gnu)
       racc (~> 1.4)
     parallel (1.24.0)
     parser (3.3.0.5)
@@ -50,7 +52,7 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (5.0.4)
-    racc (1.7.3)
+    racc (1.8.1)
     rainbow (3.1.1)
     rake (13.1.0)
     regexp_parser (2.9.0)
@@ -93,6 +95,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   extreme_overclocking_client!
