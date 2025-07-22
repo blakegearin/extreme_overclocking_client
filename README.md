@@ -2,7 +2,7 @@
 
 Ruby client for [Extreme Overclocking's Folding@home Data Export](https://folding.extremeoverclocking.com/?nav=XML)
 
-Need more data on projects and GPUs? Try out [`folding_at_home_client`](https://github.com/blakegearin/extreme_overclocking_client)
+Need more data on projects and GPUs? Try out [`folding_at_home_client`](https://github.com/blakegearin/folding_at_home_client)
 
 ## Getting Started
 
